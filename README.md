@@ -199,4 +199,16 @@ Umi-OCR-PPOCRv6/
 
 ---
 
+## Star History
+
+<a href="https://www.star-history.com/?repos=py97%2FUmi-OCR-PPOCRv6&type=date&legend=top-left">
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=py97/Umi-OCR-PPOCRv6&type=date&theme=dark&legend=top-left" />
+<source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=py97/Umi-OCR-PPOCRv6&type=date&legend=top-left" />
+<img alt="Star History Chart" src="https://api.star-history.com/chart?repos=py97/Umi-OCR-PPOCRv6&type=date&legend=top-left" />
+</picture>
+</a>
+
+---
+
 <p align="center">基于 <a href="https://github.com/hiroi-sora/Umi-OCR">Umi-OCR</a> v2.1.5 · MIT 许可 · 仅供学习与非商业使用</p>
