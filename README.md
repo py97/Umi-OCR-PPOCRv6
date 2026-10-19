@@ -16,10 +16,12 @@
 
 本项目是 [Umi-OCR](https://github.com/hiroi-sora/Umi-OCR) v2.1.5 的一个**社区优化修改版**，在保留原版全部功能的基础上做了两件事：
 
-1. **更换 OCR 引擎为 SimdPaddleOCR 并设为默认** —— 纯托管（C#）PP-OCRv6 推理库，不依赖 OpenCV / OpenVINO / Paddle Inference 等原生组件，OCR 在独立的 .NET 进程中运行，彻底告别原生 DLL 冲突问题。
+1. **更换 OCR 引擎为 [SimdPaddleOCR](https://github.com/sdcb/SimdPaddleOCR) 并设为默认** —— 纯托管（C#）PP-OCRv6 推理库，不依赖 OpenCV / OpenVINO / Paddle Inference 等原生组件，OCR 在独立的 .NET 进程中运行，彻底告别原生 DLL 冲突问题。
 2. **对图形界面做了暖色主题与无边框窗口的重新设计** —— 去掉系统标题栏、顶部右侧集成窗口控制按钮、以左侧导航栏取代标签页、统一暖黄色调，整体更接近现代原生桌面应用的观感。
 
 **免费、开源、完全离线**。完整可运行程序以 Releases 的 `.7z` 便携包形式分发，解压即用，无需联网、无需安装、无需 Python 环境。
+
+> 💙 特别感谢 **[SimdPaddleOCR](https://github.com/sdcb/SimdPaddleOCR)**（作者 [sdcb](https://github.com/sdcb)）提供的高质量纯托管 PP-OCRv6 推理引擎，本项目的 OCR 能力完全建立在这套优秀的开源库之上。
 
 > 本仓库为**源码与文档**仓库（轻量）；完整可运行的程序随 Releases 的 `.7z` 包分发，解压后双击 `Umi-OCR.exe` 即用，无需任何构建步骤。
 
