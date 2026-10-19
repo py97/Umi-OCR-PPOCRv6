@@ -27,6 +27,28 @@
 
 ---
 
+## ✨ 界面预览
+
+全新暖色无边框界面 —— 实际运行效果：
+
+<p align="center">
+  <img src="images/screenshots/screenshot-ocr.png" width="49%" alt="截图 OCR"><img src="images/screenshots/batch-ocr.png" width="49%" alt="批量 OCR">
+  <img src="images/screenshots/batch-doc.png" width="49%" alt="批量文档"><img src="images/screenshots/qrcode.png" width="49%" alt="二维码">
+  <img src="images/screenshots/global-settings.png" width="49%" alt="全局设置"><img src="images/screenshots/about.png" width="49%" alt="关于">
+</p>
+<p align="center"><sub>左上起：截图 OCR · 批量 OCR · 批量文档 · 二维码 · 全局设置 · 关于（默认 Default Light 暖色主题）</sub></p>
+
+对应的设计稿（Ardot 设计系统，5 个窗口界面）：
+
+<p align="center">
+  <img src="images/design/design-screenshot-ocr.png" width="49%" alt="截图OCR 设计稿"><img src="images/design/design-batch-ocr.png" width="49%" alt="批量OCR 设计稿">
+  <img src="images/design/design-global-settings.png" width="49%" alt="全局设置 设计稿"><img src="images/design/design-qrcode.png" width="49%" alt="二维码 设计稿">
+  <img src="images/design/design-about.png" width="49%" alt="关于 设计稿">
+</p>
+<p align="center"><sub>界面重设计的原始设计稿：品牌蓝 #3563E9 强调 · 暖中性画布 · 侧边导航取代标签页</sub></p>
+
+---
+
 ## 与原版相比的主要改动
 
 | 改动项 | 说明 |
