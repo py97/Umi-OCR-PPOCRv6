@@ -24,7 +24,12 @@ Window {
     visibility: Window.Hidden // 在 MainWindowManager 中启用可见性
     // 无边框窗口：去除系统标题栏，改由软件自绘 macOS 风格窗口控制（红黄绿）与拖拽
     property bool isMainWindowTop: false
-    flags: Qt.FramelessWindowHint | (isMainWindowTop?Qt.WindowStaysOnTopHint:0)
+    // 无边框顶层窗口：
+    // - FramelessWindowHint 实现无边框
+    // - WindowSystemMenuHint + WindowMinimizeButtonHint + WindowMaximizeButtonHint
+    //   让 Qt 将其视为普通应用窗口并向 Windows 任务栏注册按钮，
+    //   否则纯 Frameless 窗口不会出现在任务栏（Win11 24H2 实测）
+    flags: Qt.Window | Qt.FramelessWindowHint | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | (isMainWindowTop?Qt.WindowStaysOnTopHint:0)
 
     width: 1240
     height: 800

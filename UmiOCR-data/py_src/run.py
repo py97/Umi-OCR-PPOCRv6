@@ -82,6 +82,18 @@ def runQml(engineAddImportPath):
     )
     qtApp.setWindowIcon(QIcon(_iconPath))
 
+    # 为进程设置独立的 AppUserModelID。
+    # 说明：本软件由 pythonw.exe 承载（无 .exe 资源标识），若不显式指定，
+    # Windows 会把窗口归入默认的 "Python" 应用组，导致任务栏不显示按钮。
+    # 设置唯一 ID 后，任务栏将其识别为独立应用并正常显示按钮。
+    try:
+        import ctypes
+
+        appUserModelId = "py97.UmiOCR.PPOCRv6"
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(appUserModelId)
+    except Exception:
+        pass
+
     # ==================== 3. OpenGlES 兼容性检查 ====================
     app_opengl.checkOpengl()
 
@@ -118,6 +130,42 @@ def runQml(engineAddImportPath):
 
     # ==================== 5. 启动翻译 ====================
     I18n.init(qtApp)
+
+    # ==================== 5.5 任务栏按钮修复 ====================
+    # 本软件由 pythonw.exe 承载，Qt 无边框窗口（FramelessWindowHint）在 Windows 上
+    # 使用 WS_POPUP 样式，且 Qt 不会主动设置 WS_EX_APPWINDOW，导致任务栏不显示按钮。
+    # 修复：窗口显示后获取 HWND，添加 WS_EX_APPWINDOW 扩展样式，并最小化/还原一次
+    # 触发任务栏重新扫描（仅 SetWindowLongPtr 不够，Win11 任务栏不会自动刷新）。
+    def _fixTaskbarButton():
+        try:
+            import ctypes
+
+            user32 = ctypes.windll.user32
+            wsExAppwindow = 0x00040000  # WS_EX_APPWINDOW
+
+            # 遍历 Qt 顶层窗口，找可见主窗口
+            for w in qtApp.topLevelWindows():
+                wid = w.winId()
+                if not wid:
+                    continue
+                hwnd = int(wid)
+                if not user32.IsWindowVisible(hwnd):
+                    continue
+                # 添加 WS_EX_APPWINDOW
+                GWL_EXSTYLE = -20
+                ex = ctypes.c_longlong(user32.GetWindowLongPtrW(hwnd, GWL_EXSTYLE)).value
+                if not (ex & wsExAppwindow):
+                    user32.SetWindowLongPtrW(hwnd, GWL_EXSTYLE, ex | wsExAppwindow)
+                # 最小化 → 还原，触发任务栏重新注册按钮
+                user32.ShowWindow(hwnd, 6)  # SW_MINIMIZE
+                user32.ShowWindow(hwnd, 9)  # SW_RESTORE
+                break
+        except Exception:
+            pass
+
+    from PySide2.QtCore import QTimer
+
+    QTimer.singleShot(800, _fixTaskbarButton)
 
     # ==================== 6. 启动qml引擎 ====================
     engine = QQmlApplicationEngine()
