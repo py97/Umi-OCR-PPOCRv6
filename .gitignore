@@ -1,0 +1,35 @@
+# ===== 运行时生成 / 用户配置（不应提交）=====
+UmiOCR-data/.settings
+UmiOCR-data/.pre_settings
+UmiOCR-data/logs/
+UmiOCR-data/temp/
+UmiOCR-data/temp_doc/
+
+# ===== Python 缓存 =====
+**/__pycache__/
+*.pyc
+
+# ===== 系统与编辑器残留 =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== 调试 / 备份残留 =====
+*.bak_*
+cap.png
+temp_iconfix/
+.workbuddy/
+
+# ===== 运行期二进制 / 框架（不入库，随 Release .7z 分发）=====
+# 本仓库定位为「源码 + 文档」，以下运行期产物由 GitHub Releases 的 .7z 包提供，
+# 进 git 会导致仓库体积庞大且每次更新产生大 diff，故一律忽略。
+Umi-OCR.exe
+UmiOCR-data/runtime/
+UmiOCR-data/site-packages/
+UmiOCR-data/plugins/win_x64_SimdPaddleOCR/backend/
+UmiOCR-data/plugins/win_x64_SimdPaddleOCR/models/
+
+# 通用二进制兜底（源码仓库不应出现以下类型）
+*.dll
+*.pyd
+*.so

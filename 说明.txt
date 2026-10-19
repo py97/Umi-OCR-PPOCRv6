@@ -1,0 +1,42 @@
+============================================
+ Umi-OCR PP-OCRv6 便携版 v2.1.5
+============================================
+
+【这是什么】
+Umi-OCR 的完整离线便携版，已预装 SimdPaddleOCR 引擎（PP-OCRv6 模型）并设为默认。
+纯本地离线识别，无需联网、无需安装、无需 Python 环境。
+
+【使用方法】
+1. 将整个文件夹复制到任意电脑（Windows 10/11 x64）。
+2. 双击「Umi-OCR.exe」即可使用。
+   （备用启动方式：双击「启动Umi-OCR.bat」，
+     如需查看日志可用「启动Umi-OCR(调试).bat」。）
+
+【界面主题】
+- 默认主题「Default Light」暖黄调，另有「Default Dark」等深色主题。
+- 切换：主界面 → 全局设置 → 界面和外观 → 主题。
+- 已优化（本版重设计）：无边框窗口、顶部右侧窗口控制按钮、左侧导航栏取代标签页、
+  统一暖黄背景（画布/侧栏/卡片），消除纯白背景突兀问题。
+
+【OCR 引擎】
+- 默认引擎（唯一引擎）：PP-OCRv6（SimdPaddleOCR）—— PaddleOCR 最新一代模型，
+  内置中文 PP-OCRv6 tiny（检测+方向分类+识别）。
+- 架构：OCR 推理在独立的 .NET 进程中运行，通过本机端口通信；
+  不依赖 OpenCV / OpenVINO / CUDA 等原生库，也不会残留后台进程。
+- 推理后端：全局设置 → PP-OCRv6（SimdPaddleOCR）→ 推理后端。
+  可选 自动（默认，有 GPU 用 Vulkan）/ CPU / Vulkan。
+
+【目录说明】
+Umi-OCR.exe                            主启动器（双击运行）
+启动Umi-OCR.bat / 启动Umi-OCR(调试).bat   备用启动脚本
+UmiOCR-data/plugins/win_x64_SimdPaddleOCR/   OCR 引擎插件（含 .NET 推理进程与模型）
+
+【常见问题】
+- 若杀毒软件拦截，请将本文件夹加入白名单后重新运行。
+- 若提示缺少 DLL，请确认系统为 64 位 Windows。
+- 首次启动会创建配置文件 UmiOCR-data/.settings，属正常现象。
+
+【许可证】
+Umi-OCR：MIT（原作者 hiroi-sora）
+SimdPaddleOCR：Apache-2.0（作者 sdcb，见根目录 LICENSE-SimdPaddleOCR）
+PaddleOCR 模型：Apache-2.0
