@@ -4,6 +4,7 @@ from .tbpu import Tbpu
 from .parser_tools.line_preprocessing import linePreprocessing  # 行预处理
 from .parser_tools.gap_tree import GapTree  # 间隙树排序算法
 from .parser_tools.paragraph_parse import ParagraphParse  # 段内分析器
+from .parser_tools.table_layout import tryTableLayout  # 表格版面检测
 
 
 class MultiPara(Tbpu):
@@ -23,6 +24,10 @@ class MultiPara(Tbpu):
 
     def run(self, textBlocks):
         textBlocks = linePreprocessing(textBlocks)  # 预处理
+        # 表格版面检测：命中则按行序输出（行内空格连接、行尾换行），跳过间隙树与自然段分析
+        table = tryTableLayout(textBlocks)
+        if table is not None:
+            return table
         textBlocks = self.gtree.sort(textBlocks)  # 构建间隙树
         nodes = self.gtree.get_nodes_text_blocks()  # 获取树节点序列
         # 对每个结点，进行自然段分析
